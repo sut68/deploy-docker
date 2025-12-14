@@ -41,7 +41,7 @@ jobs:
           file: backend/Dockerfile
           context: .
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/se-68-backend:latest
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/se-68-api:latest
     
   build_frontend:
     runs-on: ubuntu-latest
