@@ -14,12 +14,11 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 WORKDIR /app
 
 # คัดลอกไฟล์โมดูลก่อนแล้วดาวน์โหลด dependencies เพื่อให้ Docker layer cache ทำงานได้ดี
-COPY go.mod go.sum ./
+COPY ./backend/go.mod ./backend/go.sum ./
 RUN go mod download
 
 # คัดลอกซอร์สโค้ดทั้งหมดไปยัง container
-COPY . .
-
+COPY ./backend ./
 # ตั้งค่าสภาพแวดล้อมเพื่อให้ Go ใช้ cgo และคอมไพล์เป็นไบนารีสำหรับ Linux/amd64
 ENV CGO_ENABLED=1
 ENV GOOS=linux
